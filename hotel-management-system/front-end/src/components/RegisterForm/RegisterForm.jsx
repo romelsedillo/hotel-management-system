@@ -54,12 +54,18 @@ function RegisterForm() {
   });
 
   const onSubmit = (data) => {
-    // data.preventDefault();
+    const { firstName, lastName, age, gender, email, password } = data;
     axios
-      .post("http://localhost:3001/register", { data })
+      .post("http://localhost:3001/register", {
+        firstName,
+        lastName,
+        age,
+        gender,
+        email,
+        password,
+      })
       .then((result) => console.log(result))
       .catch((err) => console.log(err));
-    console.log(data.firstName, data.lastName);
   };
 
   return (
@@ -288,6 +294,14 @@ function RegisterForm() {
         </div>
       </div>
       <RegisterButton />
+      <div className="">
+        <div className="my-2 text-center">
+          <p>Already have an account?</p>
+          <a href="/login" className="text-indigo-600 hover:underline">
+            Login here.
+          </a>
+        </div>
+      </div>
     </form>
   );
 }

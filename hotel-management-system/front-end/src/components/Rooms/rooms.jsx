@@ -186,8 +186,8 @@ const rooms = () => {
                   Room Rate: <span className="text-[#9B8046]">₱ 1250</span> /
                   NIGHT{" "}
                 </p>
-                <p>2 Single Beds / 1 Matrimonial Bed</p>
-                <p className=" font-Montserrat">Good for: 2 to 3 persons</p>
+                <p className="text-[12px] font-bold font-Montserrat">2 Single Beds / 1 Matrimonial Bed</p>
+                <p className=" font-Montserrat">Good for: 3 to 4 persons</p>
               </div>
               <div className="flex flex-col w-full  gap-3">
                 <div className="flex w-full gap-2">

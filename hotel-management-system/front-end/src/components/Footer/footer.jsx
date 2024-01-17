@@ -21,7 +21,7 @@ const footer = () => {
           <div>
             <div className="flex gap-2">
               <i className="text-[12px]">
-                <FontAwesomeIcon icon={faPhone} size=""/>
+                <FontAwesomeIcon icon={faPhone} />
               </i>
               <p className="text-[12px]">+63917 317 9158</p>
             </div>

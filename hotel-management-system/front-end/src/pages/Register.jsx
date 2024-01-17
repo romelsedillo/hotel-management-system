@@ -4,10 +4,10 @@ import RegisterForm from "../components/RegisterForm/RegisterForm";
 const Register = () => {
   return (
     <div
-      className=" bg-cover bg-center h-screen w-full flex justify-end"
+      className=" bg-cover bg-center h-screen w-full flex justify-center"
       style={{ backgroundImage: `url(${Homebg})` }}
     >
-      <div className="w-[30%] mt-5 mr-[80px]">
+      <div className="w-[40%] py-4">
         <RegisterForm />
       </div>
     </div>
