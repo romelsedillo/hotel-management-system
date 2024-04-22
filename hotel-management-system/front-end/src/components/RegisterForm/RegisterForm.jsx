@@ -5,10 +5,14 @@ import * as yup from "yup";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import RegisterButton from "./RegisterButton";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function RegisterForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const navigate = useNavigate();
+
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
   };
@@ -24,12 +28,6 @@ function RegisterForm() {
       .positive("Age is invalid. *")
       .integer("Age is invalid. *")
       .required("Age is required. *"),
-    //   .transform((value, originalValue) => {
-    //     if (originalValue === "") {
-    //       return NaN;
-    //     }
-    //     return value;
-    //   }),
     gender: yup.string().required("Gender is required. *"),
     email: yup
       .string()
@@ -64,7 +62,12 @@ function RegisterForm() {
         email,
         password,
       })
-      .then((result) => console.log(result))
+      .then((result) => {
+        console.log(result);
+        if (result.data === "Success") {
+          navigate("/guest-dashboard");
+        }
+      })
       .catch((err) => console.log(err));
   };
 
@@ -294,13 +297,12 @@ function RegisterForm() {
         </div>
       </div>
       <RegisterButton />
-      <div className="">
-        <div className="my-2 text-center">
-          <p>Already have an account?</p>
-          <a href="/login" className="text-indigo-600 hover:underline">
-            Login here.
-          </a>
-        </div>
+
+      <div className="my-2 text-center">
+        <p>Already have an account?</p>
+        <a href="/login" className="text-indigo-600 hover:underline">
+          Login here.
+        </a>
       </div>
     </form>
   );

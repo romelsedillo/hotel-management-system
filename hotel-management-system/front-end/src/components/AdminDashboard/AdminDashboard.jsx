@@ -1,3 +1,4 @@
+import { Outlet } from "react-router-dom";
 import SideBar from "./Sidebar";
 const AdminDashboard = () => {
   return (
@@ -6,7 +7,7 @@ const AdminDashboard = () => {
         <SideBar />
       </div>
       <div className=" bg-slate-100 w-[100%] h-screen">
-        <h1 className="text-black ml-8 mt-8">Admin Dashboard</h1>
+        <Outlet/>
       </div>
     </div>
   );

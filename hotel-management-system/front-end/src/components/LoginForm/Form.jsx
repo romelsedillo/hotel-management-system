@@ -1,50 +1,49 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+// import Email from "./Email";
+// import Password from "./Password";
+// import Button from "./Button";
 import { Input } from "@nextui-org/react";
 import { EyeFilledIcon } from "./EyeFilledIcon";
 import { EyeSlashFilledIcon } from "./EyeSlashFilledIcon";
 import { Button } from "@nextui-org/react";
 
-// import { toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 const Form = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-  const [isVisible, setIsVisible] = React.useState(false);
+  const [isVisible, setIsVisible] = useState(false);
   const navigate = useNavigate();
 
-  // const showToastMessage = () => {
-  //   toast.success("Login Successful!", {
-  //     position: toast.POSITION.TOP_RIGHT,
-  //   });
-  // };
+  const showToastMessage = () => {
+    toast.success("Login Successful!", {
+      position: toast.POSITION.TOP_RIGHT,
+    });
+  };
   const toggleVisibility = () => setIsVisible(!isVisible);
-
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     axios
       .post("http://localhost:3001/guest", { email, password })
       .then((result) => {
         console.log(result);
-        if (result.data === "Success") {
-          alert('Success')
-          navigate("/guest-dashboard");
-          navigate("/guest-dashboard");
-        }
-        else{
-          console.log("Navigation should happen now");
+        console.log(e.value);
 
+        if (result.data === "Success") {
+          navigate("/guest-dashboard");
+          showToastMessage()
         }
       })
       .catch((error) => console.log(error));
   };
-
   return (
     <form
       action=""
       onSubmit={handleSubmit}
-      className="w-[100%] flex flex-col gap-3 px-10 py-6 rounded-lg border bg-[#ffffff]"
+      className="w-[100%] flex flex-col gap-3 px-10 py-6 rounded-lg bg-[#ffffff]"
     >
       <h1 className="text-center text-[30px] font-bold text-[#7828C8]">
         Hello!
@@ -53,11 +52,14 @@ const Form = () => {
         We are happy to see you again!
       </h6>
 
+      {/* <Email onValueChange={email}/> */}
+      {/* <Password onChange={(e) => setPassword(e.target.value)} /> */}
+      {/* <Button /> */}
       <Input
-        isClearable
         isRequired
+        isClearable
         variant="bordered"
-        color="secondary"
+        color="primary"
         size="sm"
         type="email"
         label="Email"
@@ -69,7 +71,7 @@ const Form = () => {
         isRequired
         label="Password"
         variant="bordered"
-        color="secondary"
+        color="primary"
         size="sm"
         name="password"
         onChange={(e) => setPassword(e.target.value)}

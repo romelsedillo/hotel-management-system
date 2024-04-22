@@ -10,10 +10,11 @@ export default function App() {
 
   return (
     <Input
+    name="password"
+      isRequired
+      size="sm"
       label="Password"
       variant="bordered"
-      color="secondary"
-      size="sm"
       endContent={
         <button
           className="focus:outline-none"
@@ -28,7 +29,7 @@ export default function App() {
         </button>
       }
       type={isVisible ? "text" : "password"}
-      className="w-full outline-none"
+      className="w-full"
     />
   );
 }
